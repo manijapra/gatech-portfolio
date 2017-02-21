@@ -1,5 +1,5 @@
 // bmptoc.c
-// Name: Mani Japra (902958199)
+// Name: Mani Japra
 
 #include <stdio.h>
 #include <string.h>
