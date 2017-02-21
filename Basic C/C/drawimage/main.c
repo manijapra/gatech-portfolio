@@ -1,5 +1,5 @@
 // Draw an image from bmptoc
-// Name: Mani Japra (902958199)
+// Name: Mani Japra
 
 // If you want to test this with one of your own images, you may do so by
 // including the appropriate header file. However, when you submit this file,
