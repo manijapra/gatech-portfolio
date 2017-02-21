@@ -1,0 +1,72 @@
+===============================================================================
+CS2200                        MicroProject-2                        Spring 2016
+===============================================================================
+
+Name: Mani Japra (902958199)
+
+Q1: What does the '-g' flag present in the gcc command do?
+
+	The '-g' flag present in a gcc command enables built in debugging support.
+
+Q2: What is the value of the ‘char*‘ argument that was passed last into the print scrambled()
+function? Can you guess what caused the segmentation fault based on this information?
+
+	The value of the 'char*' argument that was passed last into the print_scrambled() function was: 0x0.
+
+	Because the value of the argument was 0x0, the program had a segmentation fault because there was a NULL passed into the program.
+
+Q3: What is the address of the stack pointer and frame pointer before the seg fault? Based on this
+information, can you figure out where the ‘char*‘ argument is stored on the stack before the segmentation
+fault occurred?
+
+	Address of Stack pointer: 0x7fffffffde90
+	Address of Frame pointer: 0x7ffff7dd5970
+
+	The char* argument is stored at the location of the frame pointer.
+
+--- Part 2 ---
+
+Q4: 
+4.1 In which function did the segfault occur?
+	
+	void setint(int* ip, int i);
+
+4.2 Which line of the source code (unmodified) caused the segfault?
+	
+	Line 27
+
+4.3 Who is the caller of this function?
+	
+	main();
+
+4.4 What is the PC address at which the segfault occurred?
+	
+	0x400698
+
+Q5: Where in memoy is memset() linked? Explain to us how you figured this out.
+	
+	memset() is linked to 0x00007ffff7a9e190 in memory - the STT_GNU_IFUNC resolver. I figured this out by setting a breakpoint at memset() after setting a breakpoint at main() and letting the program run. Then, by calling "info breakpoints" I found the location in memory that the memset() breakpoint is located and the type of breakpoint it is.
+
+Q6: In GDB, using only what you have learned, find the first 5 instructions in memset() on your
+machine? As a system call, does memset() use a different stack (e.g. kernel stack) than the user space stack?
+How did you figure this out?
+
+6.1 First 5 instructions in memset() on my machine:
+
+	1. movd   %esi,%xmm8
+	2. mov    %rdi,%rax
+	3. punpcklbw %xmm8,%xmm8
+	4. punpcklwd %xmm8,%xmm8
+	5. pshufd $0x0,%xmm8,%xmm8
+
+6.2 As a system call, does memset() use a different stack (e.g. kernel stack) than the user space stack?
+How did you figure this out?
+
+	memset() does in fact use a different stack rather than the user space stack. I found this out by running the command "info stack" and noticed that there were 3 stacks total -- one for the main method, one for the write_message method, and one for the memset stack. I also noticed that it isn't located on the user stack because the location of the memset stack is "../sysdeps/x86_64/multiarch/../memset.S:53".
+
+Q7: For this program, why cant the ‘backtrace‘ command of GDB work as it is supposed to? Answer briefly.
+
+	We can't use the 'backtrace' command of GDB because the method write_message(char *message) uses system libraries and backtrace terminates before going into the highly system-specific code, thus making it useless to catch the buffer size error.
+
+
+

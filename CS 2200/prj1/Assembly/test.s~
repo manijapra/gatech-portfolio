@@ -1,0 +1,4 @@
+addi $a0, $zero, 6
+addi $a1, $zero, 5
+add $a2, $a0, $a1
+halt

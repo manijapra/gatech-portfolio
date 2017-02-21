@@ -1,0 +1,71 @@
+===============================================================================
+CS2200                        Micro-Project 1                       Spring 2016
+===============================================================================
+			     Name:  Mani Japra
+			      GTid: 902958199
+===============================================================================
+
+1. [30 points] Define a procedure calling convention for the LC-2200 assembly language. Your answer
+should have enough detail so that someone else could write a procedure (or procedure call) to be
+used as part of another program. You can come up with your own convention, but we recommend
+basing your convention description off of the one shown in class and described above. Be sure to
+explicitly address the following standard issues:
+
+(a) [10/30 points] Define how registers are used. Which registers are used for what? (Specify
+ALL registers, including those that are not used.)
+
+Registers are used in conjunction with opcodes and/or offsets to store temporary results, perform data processes, and do arithmatic and logical operations. In assembly, these opcodes and/or offsets are replaced with language instructions (i.e. add, addi, lw, sw, etc.) to make machine language more readable for the programmer. 
+
+Register #  ||  Use                        
+-------------------------------------------
+    0       ||  Always Zero
+    1       ||  Reserved for the Assembler
+    2       ||  Return Value
+    3       ||  Argument #1
+    4       ||  Argument #2
+    5       ||  Argument #3
+    6       ||  Temporary Variable
+    7       ||  Temporary Variable
+    8       ||  Temporary Variable
+    9       ||  Saved Register
+   10       ||  Saved Register
+   11       ||  Saved Register
+   12       ||  Reserved for OS and Traps
+   13       ||  Stack Pointer
+   14       ||  Frame Pointer
+   15       ||  Return Address
+
+(b) [10/30 points] Define how the stack is accessed. What does the stack pointer point to? In
+which way does the stack grow in terms of memory addresses?
+
+The stack is accessed through the register labeled $sp (Register 13).
+
+The stack pointer initially points to the beginning of the stack but changes as the registers $t1, $t2, and $ra are stored onto the stack.
+
+The stack grows incrementally in terms of memory addresses.
+
+Visual Aid:
+----------
+Case: Fibonnaci(4)
+
+The stack at one point of the code will look as follows:
+
+Stack Pointer ($sp) --->  Return Address ($ra)  (0x4000)
+			  $t1 = 3	 	(0x4001)
+			  $t2 = 2	 	(0x4002)
+			  Return Address	(0x4003)
+			  $t1 = 1		(0x4004)
+			  $t2 = 1		(0x4005)
+			  
+
+(c) [10/30 points] Define the mechanics of the call, including what the caller does to initiate a
+procedure call, what the callee does at the beginning of a procedure, what the callee does at
+the end of a procedure to return to the caller, and what the caller does to clean up after the
+procedure returned.
+
+The caller first puts any variables they need stored onto the stack. From there, the caller calls the function upon setting the $ra (return address) to PC + 1. Then, the callee saves the return address onto the stack. Upon the completion of the function, the callee returns to $ra (PC + 1). The caller then retrieves any variables that it needs to off of the stack through the register $a0. Hence, completing the cycle.
+
+Caller saves $t1 & $t2.
+Callee saves the old return address ($ra).
+
+
