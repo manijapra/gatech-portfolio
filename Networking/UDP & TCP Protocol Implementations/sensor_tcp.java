@@ -5,7 +5,6 @@ import java.math.BigInteger;
 
 /**
  * Mani Japra
- * 902958199
  *
  * CS 3251
  * TCP Client
