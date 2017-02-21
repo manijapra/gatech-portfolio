@@ -1,7 +1,7 @@
 DESTINY: THE TAKEN KING
 -----------------------
 
-Created By: Mani Japra (902958199)
+Created By: Mani Japra
 
 Premise:
 --------
