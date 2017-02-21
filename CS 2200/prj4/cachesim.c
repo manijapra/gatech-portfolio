@@ -1,6 +1,5 @@
 /* CS 2200 - Project 4 - Spring 2016
  * Name - Mani Japra
- * GTID - 902958199
  */
 
 #include "cachesim.h"
