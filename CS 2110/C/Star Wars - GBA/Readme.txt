@@ -1,7 +1,7 @@
 STAR WARS
 ---------
 
-Created By: Mani Japra (902958199)
+Created By: Mani Japra
 
 Premise:
 --------
