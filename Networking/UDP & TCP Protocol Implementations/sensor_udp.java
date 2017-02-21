@@ -7,7 +7,6 @@ import java.net.DatagramPacket;
 
 /**
  * Mani Japra
- * 902958199
  *
  * CS 3251
  * UDP Client
