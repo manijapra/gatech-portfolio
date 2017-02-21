@@ -1,4 +1,4 @@
-// Name: Mani Japra (902958199)
+// Name: Mani Japra
 
 typedef unsigned short u16;
 
