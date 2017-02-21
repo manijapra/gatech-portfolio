@@ -8,7 +8,6 @@
 #include <limits.h>
 #include <unistd.h>
 // Mani Japra
-// 902958199
 // CS 2200 - Spring 2016
 
 /* Some constants that you can use */
