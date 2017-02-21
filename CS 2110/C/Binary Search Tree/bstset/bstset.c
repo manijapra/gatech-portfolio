@@ -2,7 +2,7 @@
  * CS 2110 - Fall 2015 - HW11
  * Andrew Wilder
  *
- * Name: ***** Mani Japra (902958199) !! *****
+ * Name: ***** Mani Japra !! *****
  * bstset.c: Complete the functions!
  */
 
