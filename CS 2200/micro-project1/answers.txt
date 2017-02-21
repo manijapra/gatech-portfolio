@@ -2,7 +2,6 @@
 CS2200                        Micro-Project 1                       Spring 2016
 ===============================================================================
 			     Name:  Mani Japra
-			      GTid: 902958199
 ===============================================================================
 
 1. [30 points] Define a procedure calling convention for the LC-2200 assembly language. Your answer
