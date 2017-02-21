@@ -1,0 +1,241 @@
+- Server Start up:
+
+*TCP:
+
+Correct filetype:
+root@d2e37d4ea88e:/home/CS3251_Proj1/myfiles# java sensor_server_tcp -d -p 50 -f passwords.csv
+Port Number set to: 50
+Password List CSV file set to: "passwords.csv"
+
+Incorrect filetype:
+root@d2e37d4ea88e:/home/CS3251_Proj1/myfiles# java sensor_server_tcp -d -p 50 -f passwords.txt
+Port Number set to: 50
+Incorrect File Type.
+
+*UDP:
+
+Correct filetype:
+root@d2e37d4ea88e:/home/CS3251_Proj1/myfiles# java sensor_server_udp -d -p 50 -f passwords.csv
+Port Number set to: 50
+Password List CSV file set to: "passwords.csv"
+
+Incorrect filetype:
+root@d2e37d4ea88e:/home/CS3251_Proj1/myfiles# java sensor_server_udp -d -p 50 -f passwords.txt
+Port Number set to: 50
+Incorrect File Type.
+
+- Client Start up:
+
+*TCP:
+
+root@64806b2fd0d5:/home/CS3251_Proj1/myfiles# java sensor_tcp -d -s 172.17.0.3 -p 50 -u "Mani" -c "Japra" -r 80
+
+Server refused connection. Try again.
+
+*UDP:
+
+root@64806b2fd0d5:/home/CS3251_Proj1/myfiles# java sensor_udp -d -s 172.17.0.3 -p 50 -u "Mani" -c "Japra" -r 80
+
+Sending Authentication Request...
+Server hasn't responded...
+Trying again...
+Server hasn't responded...
+Trying again...
+Server hasn't responded...
+Trying again...
+Server Not Responding.
+
+- Server/Client Successful Communication:
+
+>Server side:
+
+root@d2e37d4ea88e:/home/CS3251_Proj1/myfiles# # java sensor_server_tcp -d -p  50 -f passwords.csv
+Port Number set to: 50
+Password List CSV file set to: "passwords.csv"
+
+Client Connected!
+Host Address: 172.17.0.2
+Port: 55144
+
+Generating Challenge Value...
+J\=|rM8I<vCtsq`\=]}4uF|BBm_YK@GC;q34fL|{^ZgrxezkB`4\RaK[\7rb@e3F
+-auth true
+
+Successfully added new sensor value!
+Sensor: Mani
+Recorded: 100.0
+Time: Fri Sep 30 09:08:04 UTC 2016
+Maximum: 100.0
+Minimum: 100.0
+Average: 100.0
+All Sensor Average: 100.0
+
+>Client side:
+
+root@64806b2fd0d5:/home/CS3251_Proj1/myfiles# java sensor_tcp -d -s 172.17.0.3 -p 50 -u "Mani" -c "Japra" -r 100
+
+Sending Authentication Request...
+Received Challenge Value...
+Calculating MD5 Hash...
+Sending MD5 Hash...
+Received Authentication Response...
+Authentication Successful!
+
+Sending Sensor Data...
+
+Successfully added new sensor value!
+Sensor: Mani
+Recorded: 100.0
+Time: Fri Sep 30 09:08:04 UTC 2016
+Maximum: 100.0
+Minimum: 100.0
+Average: 100.0
+All Sensor Average: 100.0
+
+- Multiple transactions and results from same sensor (Using data from previous section)
+
+>Server side:
+
+root@d2e37d4ea88e:/home/CS3251_Proj1/myfiles# # java sensor_server_tcp -d -p  50 -f passwords.csv
+Port Number set to: 50
+Password List CSV file set to: "passwords.csv"
+
+Client Connected!
+Host Address: 172.17.0.2
+Port: 55144
+
+Generating Challenge Value...
+J\=|rM8I<vCtsq`\=]}4uF|BBm_YK@GC;q34fL|{^ZgrxezkB`4\RaK[\7rb@e3F
+-auth true
+
+Successfully added new sensor value!
+Sensor: Mani
+Recorded: 100.0
+Time: Fri Sep 30 09:08:04 UTC 2016
+Maximum: 100.0
+Minimum: 100.0
+Average: 100.0
+All Sensor Average: 100.0
+
+
+Client Connected!
+Host Address: 172.17.0.2
+Port: 55146
+
+Generating Challenge Value...
+x7h{J^xeD7UHnJF`L{C53:c6|k8RB?>Zs5;c=msTi:TReLuq2pd7EWDQn{qLFRr9
+-auth true
+
+Successfully added new sensor value!
+Sensor: Mani
+Recorded: 0.0
+Time: Fri Sep 30 09:11:46 UTC 2016
+Maximum: 100.0
+Minimum: 0.0
+Average: 50.0
+All Sensor Average: 50.0
+
+>Client side:
+
+root@64806b2fd0d5:/home/CS3251_Proj1/myfiles# java sensor_tcp -d -s 172.17.0.3 -p 50 -u "Mani" -c "Japra" -r 0
+
+Sending Authentication Request...
+Received Challenge Value...
+Calculating MD5 Hash...
+Sending MD5 Hash...
+Received Authentication Response...
+Authentication Successful!
+
+Sending Sensor Data...
+
+Successfully added new sensor value!
+Sensor: Mani
+Recorded: 0.0
+Time: Fri Sep 30 09:11:46 UTC 2016
+Maximum: 100.0
+Minimum: 0.0
+Average: 50.0
+All Sensor Average: 50.0
+
+- Multiple transactions and results from different sensors (Using data from previous section w/ new sensor)
+
+>Server side:
+
+root@d2e37d4ea88e:/home/CS3251_Proj1/myfiles# # java sensor_server_tcp -d -p  50 -f passwords.csv
+Port Number set to: 50
+Password List CSV file set to: "passwords.csv"
+
+Client Connected!
+Host Address: 172.17.0.2
+Port: 55144
+
+Generating Challenge Value...
+J\=|rM8I<vCtsq`\=]}4uF|BBm_YK@GC;q34fL|{^ZgrxezkB`4\RaK[\7rb@e3F
+-auth true
+
+Successfully added new sensor value!
+Sensor: Mani
+Recorded: 100.0
+Time: Fri Sep 30 09:08:04 UTC 2016
+Maximum: 100.0
+Minimum: 100.0
+Average: 100.0
+All Sensor Average: 100.0
+
+
+Client Connected!
+Host Address: 172.17.0.2
+Port: 55146
+
+Generating Challenge Value...
+x7h{J^xeD7UHnJF`L{C53:c6|k8RB?>Zs5;c=msTi:TReLuq2pd7EWDQn{qLFRr9
+-auth true
+
+Successfully added new sensor value!
+Sensor: Mani
+Recorded: 0.0
+Time: Fri Sep 30 09:11:46 UTC 2016
+Maximum: 100.0
+Minimum: 0.0
+Average: 50.0
+All Sensor Average: 50.0
+
+
+Client Connected!
+Host Address: 172.17.0.2
+Port: 55148
+
+Generating Challenge Value...
+AoRew:^hoVS;2XE=l^kL=:WRq=w:{di`CJ5UnHLf{gs<Cn]i;:EddoNSdSzp6^A?
+-auth true
+
+Successfully added new sensor value!
+Sensor: Jeremy
+Recorded: 50.0
+Time: Fri Sep 30 09:14:35 UTC 2016
+Maximum: 50.0
+Minimum: 50.0
+Average: 50.0
+All Sensor Average: 50.0
+
+>Client side:
+
+root@64806b2fd0d5:/home/CS3251_Proj1/myfiles# java sensor_tcp -d -s 172.17.0.3 -p 50 -u "Jeremy" -c "Hasian" -r 50
+
+Sending Authentication Request...
+Received Challenge Value...
+Calculating MD5 Hash...
+Sending MD5 Hash...
+Received Authentication Response...
+Authentication Successful!
+
+Sending Sensor Data...
+
+Successfully added new sensor value!
+Sensor: Jeremy
+Recorded: 50.0
+Time: Fri Sep 30 09:14:35 UTC 2016
+Maximum: 50.0
+Minimum: 50.0
+Average: 50.0
+All Sensor Average: 50.0
