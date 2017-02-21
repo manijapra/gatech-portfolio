@@ -1,0 +1,28 @@
+Release Notes (Career Fairy Version 1.0.0):
+
+
+New Features:
+Dynamic Booth Creation
+Create new booth at click location
+“Click-and-Drag” to create blocks of booths
+Dynamic Booth Relocation
+Move booths by clicking and dragging them
+Dynamic Booth Removal
+Click on booth to delete it
+“Click-and-Drag” to delete multiple booths
+Simplicity Data Import
+Export and save 
+
+
+Bug Fixes:
+FIXED: Excel process spawning on data import
+FIXED: Booth map image completely black on save
+FIXED: UI not updating on model updates
+
+
+Known Bugs:
+Crashes when trying to import an excel file that is already open
+Assignment list only updates when the list is moved or updated
+Performance issues with a large number of booths, likely due to the underlying library
+
+
